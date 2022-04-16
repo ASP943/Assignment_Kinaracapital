@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 9090:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: dbshiva
+      WORDPRESS_DB_PASSWORD: dbpassword
+      WORDPRESS_DB_NAME: db_name
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: dbshiva
+      MYSQL_PASSWORD: dbpassword
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:

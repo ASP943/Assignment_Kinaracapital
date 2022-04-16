@@ -1,0 +1,36 @@
+pipeline
+{
+ agent any
+	stages
+	{
+	 stage('Download Source code')
+	 {
+	  steps
+	   {
+	     sh 'git clone -b 5.9.3 --single-branch https://github.com/WordPress/WordPress.git'
+	   }
+	 }
+	 stage('mount config file into volume')
+	 {
+	  steps
+	   {
+	     sh 'cp -r /var/lib/jenkins/workspace/newassign/WordPress/* /var/lib/docker/volumes/root_wordpress/_data/'		
+	   }
+	 }
+     	 stage('stop wordpress container')
+	    {
+	        steps
+	            {
+							 sh 'docker stop f02409d539d5'
+	            }
+	    }
+     	 stage('start wordpress container')
+	    {
+	        steps
+	            {
+							 sh 'docker start f02409d539d5'
+	            }
+	    }
+	 
+	}
+}

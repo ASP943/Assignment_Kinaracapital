@@ -1,0 +1,21 @@
+Configuration Process
+
+# Prerequisite
+
+  1. Installed Java-8, Git
+  2. Installed Jenkins to set up ci-cd Pipeline
+  3. Installed Docker, Docker-Compose
+
+# Process Followed
+  
+    # With help of docker-compose file created the Wordpress and MYSQL data_base containers  (docker-compose up -d)
+    
+    # Volume mount paths have been identified
+    
+    # Downloading source code from git Repository with help of jenkins pipeline
+   
+    # Moving source code into the container with help of volume mount paths ( groovycode ) 
+
+
+    
+    
